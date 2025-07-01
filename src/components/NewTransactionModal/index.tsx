@@ -7,8 +7,29 @@ import {
   TransactionType,
   TransactionTypeButton,
 } from "./styles";
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const newTransactionFormSchema = z.object({
+  description: z.string(),
+  price: z.number(),
+  category: z.string(),
+  // type: z.enum(['income', 'outcome']),
+})
+
+type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
+
+  const {register, handleSubmit} = useForm<NewTransactionFormInputs>({
+    resolver: zodResolver(newTransactionFormSchema)
+  });
+
+  function handleCreateNewTransaction(data: NewTransactionFormInputs){
+    console.log(data)
+  }
+
   return (
     <Dialog.Portal>
       <Overlay />
@@ -19,10 +40,10 @@ export function NewTransactionModal() {
         </CloseButton>
         <Dialog.Title>Nova Transação</Dialog.Title>
 
-        <form action="">
-          <input type="text" placeholder="Descrição" />
-          <input type="number" placeholder="Preço" />
-          <input type="text" placeholder="Categoria" />
+        <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
+          <input type="text" placeholder="Descrição" {...register('description')}/>
+          <input type="number" placeholder="Preço" {...register('price', {valueAsNumber: true})}/>
+          <input type="text" placeholder="Categoria" {...register('category')}/>
 
           <TransactionType>
             <TransactionTypeButton value="income" variant="income">
