@@ -1,0 +1,52 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "description": "Celular",
+            "type": "income",
+            "category": "Entretenimento",
+            "price": 6000,
+            "createdAt": "2025-06-28T03:49:27.987Z"
+        },
+        {
+            "id": 2,
+            "description": "Aluguel",
+            "type": "outcome",
+            "category": "Casa",
+            "price": 5000,
+            "createdAt": "2025-06-28T03:49:27.987Z"
+        },
+        {
+            "id": 3,
+            "description": "Supermercado",
+            "type": "outcome",
+            "category": "Alimentação",
+            "price": 450,
+            "createdAt": "2025-06-29T10:15:00.000Z"
+        },
+        {
+            "id": 4,
+            "description": "Salário",
+            "type": "income",
+            "category": "Trabalho",
+            "price": 3500,
+            "createdAt": "2025-06-30T08:00:00.000Z"
+        },
+        {
+            "id": 5,
+            "description": "Internet",
+            "type": "outcome",
+            "category": "Casa",
+            "price": 120,
+            "createdAt": "2025-07-01T12:30:00.000Z"
+        },
+        {
+            "id": 6,
+            "description": "Freelance",
+            "type": "income",
+            "category": "Trabalho",
+            "price": 800,
+            "createdAt": "2025-07-02T14:45:00.000Z"
+        }
+    ]
+}
