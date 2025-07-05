@@ -62,6 +62,19 @@ export const Content = styled(Dialog.Content)`
 
       transition: background-color 0.2s;
 
+      &:disabled {
+        // Quando estiver desabilitado
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      &:not(:disabled):hover {
+        // quando estiver desabilitado incapacita o hover
+        background-color: ${(props) => props.theme.colors.product["green-500"]};
+        border-color: ${(props) => props.theme.colors.product["green-500"]};
+        color: ${(props) => props.theme.colors.base["white"]};
+      }
+
       &:hover {
         background-color: ${(props) => props.theme.colors.product["green-700"]};
       }
@@ -101,7 +114,9 @@ interface TransactionTypeButton {
   variant: "income" | "outcome";
 }
 
-export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButton>`
+export const TransactionTypeButton = styled(
+  RadioGroup.Item
+)<TransactionTypeButton>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,19 +131,21 @@ export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButt
   background-color: ${(props) => props.theme.colors.base["gray-700"]};
   color: ${(props) => props.theme.colors.base["gray-300"]};
 
-  &[data-state="checked"] { // Estilizando o Hover do RadixUI para o estado selecionado
+  &[data-state="checked"] {
+    // Estilizando o Hover do RadixUI para o estado selecionado
     color: ${(props) => props.theme.colors.base["white"]};
     background-color: ${(props) =>
-    props.variant === "income"
+      props.variant === "income"
         ? props.theme.colors.product["green-300"]
         : props.theme.colors.product["red-300"]};
 
-        svg{
-          color: ${(props) => props.theme.colors.base["white"]}
-        }
+    svg {
+      color: ${(props) => props.theme.colors.base["white"]};
+    }
   }
-  
-  &[data-state="unchecked"]:hover { // Estilizando o Hover do RadixUI para o estado não selecionado
+
+  &[data-state="unchecked"]:hover {
+    // Estilizando o Hover do RadixUI para o estado não selecionado
     transition: background-color 0.2s;
     background-color: ${(props) => props.theme.colors.base["gray-600"]};
   }

@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { Header } from "../../components/Header";
 import { Summary } from "../../components/Summary";
 import { TransactionContext } from "../../contexts/TransactionsContexts";
@@ -9,10 +8,13 @@ import {
   TransactionsTable,
 } from "./styles";
 import { dateFormatter, priceFormatter } from "../../utils/formatter";
+import { useContextSelector } from "use-context-selector";
 
 export function Transactions() {
 
-  const {transactions} = useContext(TransactionContext)
+  const transactions = useContextSelector(TransactionContext, context => {
+    return context.transactions;
+  })
 
   // API de Fetch não é recomendada por que vai está sempre fazendo requisições, o certo seria usar o useEffect para executar uma vez quando o componente for montado;
   // useEffect(() => {
