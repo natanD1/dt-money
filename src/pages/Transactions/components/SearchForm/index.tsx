@@ -13,9 +13,12 @@ const searchFormSchema = z.object({
 type SearchFormInputs = z.infer<typeof searchFormSchema>; // Crio uma tipagem com base no schema, não sendo necessário usar o Interface
 
 export function SearchForm() {
-  const fetchTransactions = useContextSelector(TransactionContext, context => {
-    return context.fetchTransactions
-  });
+  const fetchTransactions = useContextSelector(
+    TransactionContext,
+    (context) => {
+      return context.fetchTransactions;
+    }
+  );
 
   const {
     register,
@@ -38,7 +41,7 @@ export function SearchForm() {
         placeholder="Busque por transações"
         {...register("query")}
       />
-      
+
       <button type="submit" disabled={isSubmitting}>
         <MagnifyingGlass size={20} weight="bold" />
         Buscar
